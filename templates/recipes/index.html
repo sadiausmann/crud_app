@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Recipes app </h1> 
+
+{% if current_user %} 
+<h2>Welcome to recipes {{ current_user['first_name'] }}</h2>
+<section class="controls">
+    <form action="/sessions/delete" method="POST">
+      <button>Log out</button>
+    </form>
+</section>
+{% else %}
+<a href="/users/new">Sign up</a>
+<a href="/sessions/new">Log in</a>
+{% endif %}
+
+{% endblock %}
