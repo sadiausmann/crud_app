@@ -1,18 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Recipes app </h1> 
+<h1>Recipes</h1> 
 
-{% if current_user %} 
-<h2>Welcome to recipes {{ current_user['first_name'] }}</h2>
 <section class="controls">
-    <form action="/sessions/delete" method="POST">
-      <button>Log out</button>
-    </form>
-</section>
-{% else %}
-<a href="/users/new">Sign up</a>
-<a href="/sessions/new">Log in</a>
-{% endif %}
+  <a href="/users/new">Sign up</a>
+  <a href="/sessions/new">Log in</a>
 
+<section class="recipes">
+  {% for recipe in recipes: %}
+  <section class="recipe">
+    <header>
+      <h2><a href="/recipes/recipe"></a>{{ recipe['title'] }}</h2>
+    </header>
+
+    <img src="{{ recipe['image_url'] }}" alt="image"> 
+  </section>
+  {% endfor %}
+</section>
+ 
 {% endblock %}

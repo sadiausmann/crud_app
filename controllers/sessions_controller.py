@@ -1,5 +1,7 @@
 from flask import render_template, request, redirect, session
 from models.user import find_user_by_email
+from models.recipe import all_recipes
+from services.session_info import current_user
 import bcrypt
 
 def new():
@@ -15,10 +17,14 @@ def create():
     valid_password = bcrypt.checkpw(password.encode(),user['password_digest'].encode())
     if valid_password:
         session['user_id'] = user['id']
-        return redirect('/') # make new page without sign in or login link, ormake them go way after log in. 
+        return redirect('/sessions/index')
     else:
         return redirect('/sessions/new')
     
 def delete():
     session.clear()
     return redirect('/')
+
+def index():
+    recipes = all_recipes()
+    return render_template('sessions/index.html', recipes=recipes,current_user= current_user())
