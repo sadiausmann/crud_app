@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Recipes</h1> 
+<!-- if condition -->
+{% if current_user %}
+<section class="controls">
+    <form action="/sessions/delete" method="POST">
+      <button>Log out</button>
+    </form>
+
+    <a href="/recipes/new">Add recipe</a>
+</section>
+
+<section class="recipes">
+  <section class="recipe">
+    <header>
+      <a href="/sessions/page/{{recipe['id']}}"><h2>{{ recipe['title'] }}</h2></a> 
+      <section class="controls">
+        <a href="/recipes/{{ recipe['id'] }}/edit">Edit</a>
+        
+        <form action="/recipes/{{ recipe['id'] }}/delete" method= "POST">
+        <button>DELETE</button>
+        </form>
+      </section>
+    
+    </header>
+
+    <img src="{{ recipe['image_url'] }}" alt=""> 
+    <form action="/recipes/{{ recipe['id'] }}/likes" method="POST">
+        <hr>
+        <button>Like</button>
+        <span>{{ liked }}</span>
+    </form>
+    <form action="/recipes/{{ recipe['id'] }}/comment" method="POST">
+      <button>comments</button>
+        <hr>
+        <textarea placeholder="Comments..." name="comments" cols="30" rows="5"></textarea>
+    </form>
+{% else %} 
+<section class="recipes">
+  <section class="recipe">
+    <header>
+      <a href="/sessions/page/{{recipe['id']}}"><h2>{{ recipe['title'] }}</h2></a>
+    </header>
+
+    <img src="{{ recipe['image_url'] }}" alt=""> 
+
+  {% endif %}
+    <!-- for loop for comments -->
+    <section style="background-color: azure;">
+      <span>Harry</span>
+      <span>I would try this recipe</span>
+    </section>
+  
+
+  </section>
+</section>
+
+{% endblock %}

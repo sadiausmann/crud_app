@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, session
 from models.user import find_user_by_email
-from models.recipe import all_recipes
+from models.recipe import all_recipes, get_recipe
 from services.session_info import current_user
 import bcrypt
 
@@ -17,14 +17,18 @@ def create():
     valid_password = bcrypt.checkpw(password.encode(),user['password_digest'].encode())
     if valid_password:
         session['user_id'] = user['id']
-        return redirect('/sessions/index')
+        return redirect('/')
     else:
         return redirect('/sessions/new')
     
 def delete():
     session.clear()
-    return redirect('/')
+    return redirect('/recipes')
 
 def index():
     recipes = all_recipes()
-    return render_template('sessions/index.html', recipes=recipes,current_user= current_user())
+    return render_template('recipe/index.html', recipes=recipes,current_user= current_user())
+
+def recipe(id):
+    recipe = get_recipe(id)
+    return render_template('sessions/recipe.html', recipe=recipe,current_user= current_user())

@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Add Food</h1>
+<h1>Add Recipe</h1>
 <form action="/recipes" method="POST">
     <label for="">Title:</label>
-    <input type="text" name="title">
+    <input type="text" name="title" required>
 
     <label for="">Image URL:</label>
-    <input type="text" name="image_url">
+    <input type="text" name="image_url" required>
 
     <label for="">Ingredients:</label>
-    <input type="text" name="ingredients">
+    <input type="text" name="ingredients" required>
 
     <label for="">Recipe:</label>
-    <input type="text" name="title">
+    <input type="text" name="recipe" required>
 
 
-    <button>Add food</button>
+    <button>Add Recipe</button>
 </form>
 {% endblock %}

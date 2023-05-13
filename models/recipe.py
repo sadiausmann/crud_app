@@ -11,7 +11,16 @@ def get_recipe(id):
     return recipes[0]
 
 def update_recipe(title, image_url,  ingredients, recipe, id):
-    sql('UPDATE recipes SET title=%s, image_url=%s WHERE id=%s RETURNING *',[title, image_url, ingredients, recipe, id])
+    sql("UPDATE recipes SET title=%s, image_url=%s, ingredients=%s, recipe=%s WHERE id=%s RETURNING *",[title, image_url, ingredients, recipe, id])
 
 def delete_recipe(id):
-    sql('DELETE FROM recipes WHERE id=%s RETURNING *',[id])
+    sql("DELETE FROM recipes WHERE id=%s RETURNING *",[id])
+
+def like_recipe(recipe_id, user_id):
+    check_if_already_liked = sql('SELECT * FROM likes WHERE user_id = %s AND recipe_id = %s', [user_id, recipe_id])
+    if len(check_if_already_liked)>0:
+        sql('DELETE FROM likes WHERE user_id=%s AND recipe_id=%s RETURNING *',[user_id, recipe_id])
+    else:
+        sql("INSERT INTO likes(user_id, recipe_id) VALUES(%s, %s) RETURNING *", [user_id, recipe_id])
+     
+

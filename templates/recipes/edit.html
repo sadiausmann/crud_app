@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Edit Recipe</h1>
+<form action="/recipes/{{ recipe['id'] }}" method="POST">
+    <label for="">Title:</label>
+    <input type="text" name="title" value="{{ recipe['title'] }}">
+
+    <label for="">Image URL:</label>
+    <input type="text" name="image_url" value="{{ recipe['image_url']}}">
+
+    <label for="">Ingredients:</label>
+    <input type="text" name="ingredients" value="{{ recipe['ingredients'] }}">
+
+    <label for="">Recipe:</label>
+    <input type="text" name="recipe" value="{{ recipe['recipe'] }}">
+
+
+    <button>Edit Recipe</button>
+</form>
+{% endblock %}
