@@ -1,35 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Recipes</h1> 
+<div class="container">
+  <header>
+    <h1 class="title">Recipes</h1> 
 
-{% if current_user %}
+    {% if current_user %}
 
-<h2>Welcome to recipes {{ current_user['first_name'] }}</h2>
+    <h2>Welcome to recipes {{ current_user['first_name'] }}</h2>
 
-<section class="controls">
-  <form action="/sessions/delete" method="POST">
-    <button>Log out</button>
-  </form>
-</section>
+    <section class="controls">
+      <form action="/sessions/delete" method="POST">
+        <button>Log out</button>
+      </form>
+    </section>
 
-{% else %}
-<section class="controls">
-  <a href="/users/new">Sign up</a>
-  <a href="/sessions/new">Log in</a>
+    {% else %}
+    <section class="controls">
+      <a href="/users/new">Sign up</a>
+      <a href="/sessions/new">Log in</a>
+    </section>
+    {% endif %}
 
-{% endif %}
+  </header>
 
-<section class="recipes">
-  {% for recipe in recipes: %}
-  <section class="recipe">
-      <a href="/sessions/page/{{recipe['id']}}"><h2>{{ recipe['title'] }}</h2></a>
-      <img src="{{ recipe['image_url'] }}" alt="image"> 
-  </section>
-  
-  {% endfor %}
-</section>
- 
+  <main>
+    <section class="recipes">
+      {% for recipe in recipes: %}
+      <section class="recipe">
+        <img src="{{ recipe['image_url'] }}" alt="image">
+        <a href="/sessions/page/{{recipe['id']}}"><h2>{{ recipe['title'] }}</h2></a> 
+      </section>
+      {% endfor %}
+    </section>
+  </main>
+
+  <footer>
+    <p>Copyrights @ 2023</p>
+  </footer>
+</div>
 {% endblock %}
 
 
