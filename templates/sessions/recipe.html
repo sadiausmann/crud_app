@@ -1,61 +1,131 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<header>
-  <h1 class="title">Recipes</h1> 
-  <section class="controls">
-  </form>
-  <a href="/recipes/new" class="button">Add recipe</a>
-    <form action="/sessions/delete" method="POST" class="button">
-      <button>Log out</button>
-    </form>
-  </section>
-</header>
-
-<main>
-  <section class="recipesmain">
-    <section class="recipemain">
-      <header claas="individualrecipe">
-        <a href="/sessions/page/{{ recipe['id'] }}"><h2 class="main">{{ recipe['title'] }}</h2></a>
-        <section class="controls">
-          <a href="/recipes/{{ recipe['id'] }}/edit" class="button">Edit</a>
-          <form action="/recipes/{{ recipe['id'] }}/delete" method= "POST">
-            <button>Delete</button>
-          </form>
+  {% if current_user['id'] == recipe['user_id'] %}
+    <header>
+      <h1 class="title">Recipes</h1> 
+      <section class="controls">
+      </form>
+      <a href="/recipes/new" class="button">Add recipe</a>
+        <form action="/sessions/delete" method="POST" class="button">
+          <button>Log out</button>
+        </form>
+      </section>
+    </header>
+    <main>
+      <section class="recipesmain">
+        <section class="recipemain">
+          <header claas="individualrecipe">
+            <a href="/sessions/page/{{ recipe['id'] }}"><h2 class="main">{{ recipe['title'] }}</h2></a>
+            <section class="controls">
+              <a href="/recipes/{{ recipe['id'] }}/edit" class="button">Edit</a>
+              <form action="/recipes/{{ recipe['id'] }}/delete" method= "POST">
+                <button>Delete</button>
+              </form>
+            </section>
+          </header>
+          <img src="{{ recipe['image_url'] }}" alt="" class="main">
+        
+          <p class="subheading">Ingredients:</p>
+          <p>{{ recipe['ingredients'] }}</p>
+          <br>
+          <p class="subheading">Instructions:</p>
+          <p>{{ recipe['recipe'] }}</p>
+          <section class="like">
+            <form action="/recipes/{{ recipe['id'] }}/likes" method="POST">
+              <button>Like</button>
+              <span>{{ liked }}</span>
+            </form>
+        
+          
+            <form action="/recipes/{{ recipe['id'] }}/comment" method="POST">
+              <button>comments</button>
+            <hr>
+            <textarea placeholder="Comments..." name="comment" cols="30" rows="5"></textarea>
+            </form>
+            {% for comment in comments %} 
+              <span>Comments:</span>
+              {{ comments['comment'] }}
+            {% endfor %}
+          </section>
         </section>
-      </header>
-      <img src="{{ recipe['image_url'] }}" alt="" class="main">
-     
-      <p class="subheading">Ingredients:</p>
-      <p>{{ recipe['ingredients'] }}</p>
-      <br>
-      <p class="subheading">Instructions:</p>
-      <p>{{ recipe['recipe'] }}</p>
-      <section class="like">
-        <form action="/recipes/{{ recipe['id'] }}/likes" method="POST">
-          <button>Like</button>
-          <span>{{ liked }}</span>
-        </form>
-    
+      </section>    
+    </main>
+
+  {% elif current_user %}
+    <header>
+    <h1 class="title">Recipes</h1> 
+    <section class="controls">
+    </form>
+    <a href="/recipes/new" class="button">Add recipe</a>
+      <form action="/sessions/delete" method="POST" class="button">
+        <button>Log out</button>
+      </form>
+    </section>
+    </header>
+
+    <main>
+    <section class="recipesmain">
+      <section class="recipemain">
+        <header claas="individualrecipe">
+          <a href="/sessions/page/{{ recipe['id'] }}"><h2 class="main">{{ recipe['title'] }}</h2></a>
+        </header>
+        <img src="{{ recipe['image_url'] }}" alt="" class="main">
       
-        <form action="/recipes/{{ recipe['id'] }}/comment" method="POST">
-          <button>comments</button>
-        <hr>
-        <textarea placeholder="Comments..." name="comment" cols="30" rows="5"></textarea>
-          {% for comment in comments %}
-            <span>{{ comments('comment') }}</span>
+        <p class="subheading">Ingredients:</p>
+        <p>{{ recipe['ingredients'] }}</p>
+        <br>
+        <p class="subheading">Instructions:</p>
+        <p>{{ recipe['recipe'] }}</p>
+        <section class="like">
+          <form action="/recipes/{{ recipe['id'] }}/likes" method="POST">
+            <button>Like</button>
+            <span>{{ liked }}</span>
+          </form>
+      
+        
+          <form action="/recipes/{{ recipe['id'] }}/comment" method="POST">
+            <button>comments</button>
+          <hr>
+          <textarea placeholder="Comments..." name="comment" cols="30" rows="5"></textarea>
+          </form>
+          {% for comment in comments %} 
+            <span>Comments:</span>
+            {{ comments['comment'] }}
           {% endfor %}
-        </form>
+          
+        </section>
         
       </section>
-      
-    </section>
-  </section>    
-  
-</main>
+    </section>    
 
-<footer>
-  <p>Copyrights @ 2023</p>
-</footer>
+    </main>
+
+  {% else %}
+    <header>
+      <h1 class="title">Recipes</h1> 
+    </header>
+
+    <main>
+      <section class="recipesmain">
+        <section class="recipemain">
+          <header claas="individualrecipe">
+            <a href="/sessions/page/{{ recipe['id'] }}"><h2 class="main">{{ recipe['title'] }}</h2></a>
+          </header>
+          <img src="{{ recipe['image_url'] }}" alt="" class="main">
+        
+          <p class="subheading">Ingredients:</p>
+          <p>{{ recipe['ingredients'] }}</p>
+          <br>
+          <p class="subheading">Instructions:</p>
+          <p>{{ recipe['recipe'] }}</p>
+        </section>
+      </section>    
+    </main>
+  {% endif %}
+
+  <footer>
+    <p>Copyrights @ 2023</p>
+  </footer>
 
 {% endblock %}

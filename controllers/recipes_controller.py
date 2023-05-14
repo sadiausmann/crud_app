@@ -41,7 +41,7 @@ def like(id):
 
 def comments():
     comments = all_comments
-    return render_template('session/recipe.html',current_user=current_user(), comments= comments())
+    return render_template('session/recipe.html',current_user=current_user(), comments= comments, comment=comment)
 
 def comment(id):
     recipe_id = id

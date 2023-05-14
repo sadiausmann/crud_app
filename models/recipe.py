@@ -27,4 +27,4 @@ def comment_recipe(recipe_id, user_id, comment):
     sql("INSERT INTO comments (user_id, recipe_id, comment) VALUES (%s, %s, %s) RETURNING *",[user_id, recipe_id, comment])
 
 def all_comments():
-    return sql("SELECT * FROM comments ORDER by id")
+    return sql("SELECT * FROM comments")
