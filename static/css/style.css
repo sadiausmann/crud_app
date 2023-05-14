@@ -32,7 +32,11 @@ header {
     font-size: 5em;
 }
 
-h2{
+h1 {
+    text-align: center;
+}
+
+h2{ 
     font-family: 'Allura', cursive;
     font-size: 2.5em;
 }
@@ -41,33 +45,20 @@ section.controls {
     width: 50%;
     display: flex;
     justify-content:flex-end;
-    ;
     gap: 0.5em;
-}
-
-a,
-button {
-  padding: 0.25rem 0.5rem;
-  color: #4d4d4d;
-  font-size: 0.8rem;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-a.button,
-button {
-    background-color: #edf6f6;
-    border: 1px solid ;
-}
-
-h2{
-    font-family: 'Allura', cursive;
-    font-size: 2.5em;
 }
 
 main {
     grid-area: main;
-    margin: 1em;
+    margin: 1em; 
+}
+
+.tables{
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 img{
@@ -83,7 +74,6 @@ img{
     gap: 50px;
 }
 
-
 .recipes > section {    
     background-color: #fbede5;
     width: 250px;
@@ -91,18 +81,17 @@ img{
     font-size: 25px;
 }
 
-h1 {
-    text-align: center;
-}
 
 form.form {
+    flex-wrap: wrap;
     padding: 5rem;
-    margin: 0 600px;
     border-radius: 1rem;
     border: 4px solid hsl(0, 0%, 90%);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+    width: 500px;
+    
 }
 
 footer { 
@@ -140,6 +129,65 @@ h2.main{
     font-size:4em;
 }
 
-comment {
-    background-color: #edf6f6
+a,
+button {
+    padding: 0.25rem 0.5rem;
+    color: #4d4d4d;
+    font-size: 0.8rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.button,
+button {
+    border: 1px solid ;
+    font-family: sans-serif;
+    background-color: #c7b9a4;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.comments {
+    background-color: #edf6f6;
+    height: max-content;
+    border-radius: 10px;
+    border: 1px solid rgb(207, 207, 207);
+    text-align: left;
+    padding: 10px;
+}
+
+.comment-area {  display: grid;
+    grid-template-columns: 0.6fr 1.8fr 0.6fr;
+    grid-template-rows: 0.3fr 0.8fr 1.9fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". likebar ."
+      ". comment-input ."
+      ". comment .";
+  }
+  
+  .likebar { grid-area: likebar;
+    display: flex;
+    gap: 20px;
+}
+  
+.comment-input { 
+    grid-area: comment-input; }
+  
+.comment { 
+    grid-area: comment; }
+
+
+@media only screen and (max-width: 900px) {
+    main {
+      grid-template-columns: 1fr;
+    }
 }

@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, session
-from models.recipe import all_recipes, create_recipe, get_recipe, update_recipe, delete_recipe, like_recipe, comment_recipe, all_comments
+from models.recipe import all_recipes, create_recipe, get_recipe, update_recipe, delete_recipe, like_recipe, comment_recipe
 from services.session_info import current_user
 
 def index():
@@ -39,14 +39,15 @@ def like(id):
     like_recipe(id, session['user_id'])
     return redirect(f'/sessions/page/{id}')
 
-def comments():
-    comments = all_comments
-    return render_template('session/recipe.html',current_user=current_user(), comments= comments, comment=comment)
 
 def comment(id):
     recipe_id = id
     user_id = current_user()['id']
-    comment = request.form.get('comment')
+    comment = request.form.get('comment-output')
     comment_recipe(recipe_id, user_id, comment)
+
     return redirect(f'/sessions/page/{id}')
+
+
+
 

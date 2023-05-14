@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, session
 from models.user import find_user_by_email
-from models.recipe import all_recipes, get_recipe
+from models.recipe import all_recipes, get_recipe, all_comments, all_likes
 from services.session_info import current_user
 import bcrypt
 
@@ -31,4 +31,6 @@ def index():
 
 def recipe(id):
     recipe = get_recipe(id)
-    return render_template('sessions/recipe.html', recipe=recipe,current_user= current_user())
+    comments = all_comments(id)
+    likes_count = all_likes(id)[0]
+    return render_template('sessions/recipe.html', recipe=recipe,current_user= current_user(), comments = comments, likes_count = likes_count)

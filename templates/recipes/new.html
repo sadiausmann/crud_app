@@ -1,21 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Add Recipe</h1>
-<form action="/recipes" method="POST" class="form">
-    <label for="">Title:</label>
-    <input type="text" name="title" required>
+<header>
+    <h1 class="title">Recipes</h1>
+    <a href="/recipes" class="button">Go to homepage</a>
+</header>
 
-    <label for="">Image URL:</label>
-    <input type="text" name="image_url" required>
+<main class="tables">
+    <h1>Add Recipe</h1>
+    <section>
+        <form action="/recipes" method="POST" class="form">
+            <label for="">Title:</label>
+            <input type="text" name="title" required>
+    
+            <label for="">Image URL:</label>
+            <input type="text" name="image_url" required>
+    
+            <label for="">Ingredients:</label>
+            <input type="text" name="ingredients" required>
+    
+            <label for="">Recipe:</label>
+            <input type="text" name="recipe" required>
+    
+            <button>Add Recipe</button>
+        </form>
+    </section>
+    
+</main>
 
-    <label for="">Ingredients:</label>
-    <input type="text" name="ingredients" required>
-
-    <label for="">Recipe:</label>
-    <input type="text" name="recipe" required>
-
-
-    <button>Add Recipe</button>
-</form>
+<footer>
+    <p>Copyrights @ 2023</p>
+</footer>
 {% endblock %}

@@ -24,7 +24,13 @@ def like_recipe(recipe_id, user_id):
         sql("INSERT INTO likes(user_id, recipe_id) VALUES(%s, %s) RETURNING *", [user_id, recipe_id])
 
 def comment_recipe(recipe_id, user_id, comment):
-    sql("INSERT INTO comments (user_id, recipe_id, comment) VALUES (%s, %s, %s) RETURNING *",[user_id, recipe_id, comment])
+    sql("INSERT INTO comments (recipe_id, user_id, comment) VALUES (%s, %s, %s) RETURNING *",[recipe_id, user_id, comment])
 
-def all_comments():
-    return sql("SELECT * FROM comments")
+def all_comments(recipe_id):
+    return sql("SELECT * FROM comments WHERE recipe_id =%s",[recipe_id])
+
+def all_likes(recipe_id):
+    return sql('SELECT COUNT(*) FROM likes WHERE recipe_id = %s', [recipe_id])
+
+
+
