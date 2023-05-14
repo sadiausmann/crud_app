@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<header>
+    <h1 class="title">Recipes</h1>
+</header>
+<main>
 <h1>Edit Recipe</h1>
-<form action="/recipes/{{ recipe['id'] }}" method="POST">
+<form action="/recipes/{{ recipe['id'] }}" method="POST" class="form">
     <label for="">Title:</label>
     <input type="text" name="title" value="{{ recipe['title'] }}">
 
@@ -15,7 +19,11 @@
     <label for="">Recipe:</label>
     <input type="text" name="recipe" value="{{ recipe['recipe'] }}">
 
-
     <button>Edit Recipe</button>
 </form>
+</main>
+
+<footer>
+    <p>Copyrights @ 2023</p>
+</footer>
 {% endblock %}

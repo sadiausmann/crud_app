@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.recipes_controller import index, new, create, edit, update, delete, like
+from controllers.recipes_controller import index, new, create, edit, update, delete, like, comment
 
 recipes_routes = Blueprint('recipes_routes', __name__)
 
@@ -10,6 +10,6 @@ recipes_routes.route('/<id>/edit')(edit)
 recipes_routes.route('/<id>', methods=["POST"])(update)
 recipes_routes.route('/<id>/delete', methods=["POST"])(delete) 
 recipes_routes.route('/<id>/likes', methods=["POST"])(like) 
-
+recipes_routes.route('/<id>/comment', methods=["POST"])(comment) 
 
 

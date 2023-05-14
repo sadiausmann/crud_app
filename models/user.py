@@ -15,3 +15,4 @@ def find_user_by_email(email):
 def find_user_by_id(id):
   users = sql('SELECT * FROM users WHERE id = %s', [id])
   return users[0]
+

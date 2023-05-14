@@ -10,8 +10,8 @@ def get_recipe(id):
     recipes = sql("SELECT * FROM recipes WHERE id = %s",[id])
     return recipes[0]
 
-def update_recipe(title, image_url,  ingredients, recipe, id):
-    sql("UPDATE recipes SET title=%s, image_url=%s, ingredients=%s, recipe=%s WHERE id=%s RETURNING *",[title, image_url, ingredients, recipe, id])
+def update_recipe(user_id ,title, image_url,  ingredients, recipe, id):
+    sql("UPDATE recipes SET user_id=%s, title=%s, image_url=%s, ingredients=%s, recipe=%s WHERE id=%s RETURNING *",[user_id, title, image_url, ingredients, recipe, id])
 
 def delete_recipe(id):
     sql("DELETE FROM recipes WHERE id=%s RETURNING *",[id])
@@ -22,5 +22,9 @@ def like_recipe(recipe_id, user_id):
         sql('DELETE FROM likes WHERE user_id=%s AND recipe_id=%s RETURNING *',[user_id, recipe_id])
     else:
         sql("INSERT INTO likes(user_id, recipe_id) VALUES(%s, %s) RETURNING *", [user_id, recipe_id])
-     
 
+def comment_recipe(recipe_id, user_id, comment):
+    sql("INSERT INTO comments (user_id, recipe_id, comment) VALUES (%s, %s, %s) RETURNING *",[user_id, recipe_id, comment])
+
+def all_comments():
+    return sql("SELECT * FROM comments ORDER by id")
