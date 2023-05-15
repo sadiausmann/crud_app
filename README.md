@@ -26,7 +26,7 @@ If user sign up and is logged in:
     -Display all the comments. Logged in users can like and comment on recipes. 
 	-If user is the owner of the recipe:
 		User can Edit and Delete the recipe. 
-	Else:
+	-Else:
 		Can only like and comment on a recipe.
 
 
@@ -37,8 +37,6 @@ Pages:
 -Add a new recipe 
 -User login 
 -User Sign up page
-
-
 
 ![project.png]
 ## :rocket: Cool tech
@@ -51,9 +49,9 @@ In my project, I utilized the following technologies and tools to achieve the de
 - Psycopg2: I used Psycopg2, a PostgreSQL adapter for the Python programming language, to connect to my PostgreSQL database. 
 - SQL: I used SQL, a standard language for managing and manipulating data stored in relational databases, to interact with my PostgreSQL database. SQL enabled me to create tables, insert data, and execute queries to retrieve data as needed.
 
-
 ## :scream: Bugs to fix :poop:
 - My application is not responsive to different screen sizes, which means that the layout and design of the application do not adjust to fit the screen size of the user's device. This can result in a poor user experience and may make the application difficult to use on devices with smaller screens. To address this issue, I plan to implement a responsive design that will ensure the application is optimized for use on any device, regardless of the screen size.  
+- Fix button placement(like and comment buttons)
 
 ## :sob: Lessons learnt
 Stick to a plan. I was jumping between ideas and have put in lot of time in changing code and fixing it.
