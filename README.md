@@ -1,14 +1,14 @@
 # crud_app (Recipes)
 Recipes is a CRUD app, built using Python, HTML, CSS and SQL. It allows user to browse recipes that other users have added. Includes sign up/ log in functionality. Users can Create, Read, Update or Delete their recipes from app.
 
-## :computer: [Click here](https://www.google.com) to see my live project!
+## :computer: [Click here](https://github.com/sadiausmann/crud_app) to see my live project!
 ## :page_facing_up: About
 
-![project.png]
-![project.png]
-![project.png]
-![project.png]
-![project.png]
+![project.png](https://github.com/sadiausmann/crud_app/blob/main/app.PNG)
+![project.png](https://github.com/sadiausmann/crud_app/blob/main/sign_up.PNG)
+![project.png](https://github.com/sadiausmann/crud_app/blob/main/qpp_logi_in)
+![project.png](https://github.com/sadiausmann/crud_app/blob/main/Recipes-%20individual%20recipe%20page.png)
+![project.png](https://github.com/sadiausmann/crud_app/blob/main/add_recipe.PNG)
 ## :pencil2: Planning & Problem Solving
 ![project.png](https://github.com/sadiausmann/crud_app/blob/main/crud_app_wireframe.png)
 ![project.png](https://github.com/sadiausmann/crud_app/blob/main/app_planning_db_tables.png)
