@@ -6,7 +6,7 @@ Recipes is a CRUD app, built using Python, HTML, CSS and SQL. It allows user to 
 
 ![project.png](https://github.com/sadiausmann/crud_app/blob/main/app.PNG)
 ![project.png](https://github.com/sadiausmann/crud_app/blob/main/sign_up.PNG)
-![project.png](https://github.com/sadiausmann/crud_app/blob/main/qpp_logi_in)
+![project.png](https://github.com/sadiausmann/crud_app/blob/main/qpp_logi_in.PNG)
 ![project.png](https://github.com/sadiausmann/crud_app/blob/main/Recipes-%20individual%20recipe%20page.png)
 ![project.png](https://github.com/sadiausmann/crud_app/blob/main/add_recipe.PNG)
 ## :pencil2: Planning & Problem Solving
