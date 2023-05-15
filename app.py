@@ -3,7 +3,8 @@ from flask import Flask, redirect
 from routes.users_routes import users_routes
 from routes.sessions_routes import sessions_routes
 from routes.recipes_routes import recipes_routes
-
+from dotenv import load_dotenv
+load_dotenv()
 
 SECRET_KEY = os.environ.get("FLASK_SECRET_KEY", "pretend key for testing only")
 
